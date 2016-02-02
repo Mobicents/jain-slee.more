@@ -3,13 +3,13 @@
 
 	<parent>
 		<groupId>org.mobicents.servers.jainslee.tck</groupId>
-		<artifactId>mobicents-slee-tck</artifactId>
+		<artifactId>restcomm-slee-tck</artifactId>
 		<version>2.1.0-SNAPSHOT</version>
 	</parent>
 		
-	<artifactId>mobicents-slee-tck-plugin</artifactId>
+	<artifactId>restcomm-slee-tck-plugin</artifactId>
 
-	<name>Mobicents :: JAIN SLEE Server :: TCK :: ${pom.artifactId}</name>
+	<name>Restcomm :: JAIN SLEE Server :: TCK :: ${pom.artifactId}</name>
 	
 	<dependencies>
 		<dependency>
@@ -33,7 +33,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>mobicents-slee-tck-plugin</finalName>
+		<finalName>restcomm-slee-tck-plugin</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>

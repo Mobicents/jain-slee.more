@@ -1,6 +1,6 @@
 /***************************************************
  *                                                 *
- *  Mobicents: The Open Source VoIP Platform      *
+ *  Restcomm: The Open Source VoIP Platform      *
  *                                                 *
  *  Distributable under LGPL license.              *
  *  See terms of license at gnu.org.               *

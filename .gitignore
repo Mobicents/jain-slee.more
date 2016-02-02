@@ -34,7 +34,7 @@ Thumbs.db
 ########
 *.mib
 
-# Mobicents #
+# Restcomm #
 #############
 ${env.JBOSS_HOME}
 ${release.dir}

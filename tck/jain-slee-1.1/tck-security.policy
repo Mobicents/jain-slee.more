@@ -54,7 +54,7 @@ grant codeBase "file:${jboss.defined.home}/server/default/work/-" {
    permission java.security.AllPermission;
 };
 
-grant codeBase "file:${jboss.defined.home}/server/default/deploy/mobicents-slee/lib/-" {
+grant codeBase "file:${jboss.defined.home}/server/default/deploy/restcomm-slee/lib/-" {
 	permission java.security.AllPermission;
 };
 grant codeBase "file:${jboss.defined.home}/server/default/deploy/-" {
@@ -64,7 +64,7 @@ grant codeBase "file:${jboss.defined.home}/server/default/deploy/-" {
 };
 
 //Strictly for tck
-grant codeBase "file:${jboss.defined.home}/server/default/deploy/mobicents-slee-tck-plugin-bean.jar" {
+grant codeBase "file:${jboss.defined.home}/server/default/deploy/restcomm-slee-tck-plugin-bean.jar" {
 	permission java.security.AllPermission;
 };
 
@@ -155,7 +155,7 @@ grant codeBase "file:${jboss.defined.home}/server/all/work/-" {
    permission java.security.AllPermission;
 };
 
-grant codeBase "file:${jboss.defined.home}/server/all/deploy/mobicents-slee/lib/-" {
+grant codeBase "file:${jboss.defined.home}/server/all/deploy/restcomm-slee/lib/-" {
 	permission java.security.AllPermission;
 };
 grant codeBase "file:${jboss.defined.home}/server/all/deploy/-" {
@@ -165,7 +165,7 @@ grant codeBase "file:${jboss.defined.home}/server/all/deploy/-" {
 };
 
 //Strictly for tck
-grant codeBase "file:${jboss.defined.home}/server/all/deploy/mobicents-slee-tck-plugin-bean.jar" {
+grant codeBase "file:${jboss.defined.home}/server/all/deploy/restcomm-slee-tck-plugin-bean.jar" {
 	permission java.security.AllPermission;
 };
 
