@@ -11,17 +11,21 @@
 
 package org.mobicents.slee.test.suite.tckwrapper;
 
+import java.lang.management.ManagementFactory;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.management.MBeanServer;
 import javax.management.ObjectInstance;
 import javax.management.ObjectName;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.jboss.system.ServiceMBeanSupport;
-
-import sun.rmi.registry.RegistryImpl;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 
 import com.opencloud.sleetck.lib.infra.sleeplugin.SleeTCKPlugin;
 
@@ -35,42 +39,73 @@ import com.opencloud.sleetck.lib.infra.sleeplugin.SleeTCKPlugin;
  *
  * 
  */
-public class SleeTCKPluginWrapper extends ServiceMBeanSupport implements SleeTCKPluginWrapperMBean 
-{
-    
+
+@Singleton
+@Startup
+public class SleeTCKPluginWrapper implements SleeTCKPluginWrapperMBean {
+    private static Logger logger = Logger.getLogger(SleeTCKPluginWrapper.class);
+
+    private MBeanServer platformMBeanServer;
+    private ObjectName objectName = null;
+
     private String tckPluginMBObjName;
     private ObjectInstance tckPluginMBean; 
     private String tckPluginClassName;
     private int rmiRegistryPort;
     private String sleeProviderImpl;   
     private Registry rmiRegistry;
-    
-    public void startService() throws Exception
+
+    @PostConstruct
+    public void registerMBean()
     {
-        
-        try
-        {
-        new RegistryImpl(getRMIRegistryPort());
+        try {
+            //objectName = new ObjectName("SleeTCK:type=" + this.getClass().getName());
+            objectName = new ObjectName("slee:service=SleeTCKWrapper");
+            platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
+            platformMBeanServer.registerMBean(this, objectName);
+        } catch (Exception e) {
+            throw new IllegalStateException("Problem during registration of Monitoring into JMX:" + e);
         }
-        catch (RemoteException re)
-        {
+
+        this.setTCKPluginClassName("com.opencloud.sleetck.lib.infra.sleeplugin.SleeTCKPlugin");
+        this.setTCKPluginMBeanObjectName(":name=SleeTCKPlugin");
+        this.setRMIRegistryPort(4099);
+        this.setSleeProviderImpl("org.mobicents.slee.container.management.jmx.SleeProviderImpl");
+
+        try {
+            //new RegistryImpl(getRMIRegistryPort());
+
+            rmiRegistry = LocateRegistry.createRegistry(getRMIRegistryPort());
+
+        } catch (RemoteException re) {
             logger.info("RMIRegistry failed to bind on port " + getRMIRegistryPort() + ". This is expected in case of redeployment. The exception message is " + re.getMessage());
         }
-        
-	    MBeanServer mbserver = getServer();
-	    ObjectName objName = new ObjectName(tckPluginMBObjName);
-	    //Logger stdErrLogger = Logger.getLogger("STDERR");
-	    //Level oldLevel = stdErrLogger.getLevel();
-	    //stdErrLogger.setLevel(Level.OFF);
-	    SleeTCKPlugin tckPlugin = new SleeTCKPlugin(rmiRegistryPort, sleeProviderImpl);
-	    tckPluginMBean = mbserver.registerMBean(tckPlugin, objName);
-	    //stdErrLogger.setLevel(oldLevel);
+
+        try {
+            ObjectName objName = new ObjectName(tckPluginMBObjName);
+
+            Logger stdErrLogger = Logger.getLogger("STDERR");
+            Level oldLevel = stdErrLogger.getLevel();
+            stdErrLogger.setLevel(Level.OFF);
+
+            SleeTCKPlugin tckPlugin = new SleeTCKPlugin(rmiRegistryPort, sleeProviderImpl);
+            tckPluginMBean = platformMBeanServer.registerMBean(tckPlugin, objName);
+
+            stdErrLogger.setLevel(oldLevel);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void stopService() throws Exception
-    {
-	    MBeanServer mbserver = getServer();
-	    mbserver.unregisterMBean(tckPluginMBean.getObjectName());
+
+    @PreDestroy
+    public void unregisterMBean() {
+        try {
+            platformMBeanServer.unregisterMBean(this.objectName);
+            platformMBeanServer.unregisterMBean(this.tckPluginMBean.getObjectName());
+        } catch (Exception e) {
+            throw new IllegalStateException("Problem during unregistration of Monitoring into JMX:" + e);
+        }
     }
 
     public void setTCKPluginClassName(String newClName)
@@ -113,6 +148,4 @@ public class SleeTCKPluginWrapper extends ServiceMBeanSupport implements SleeTCK
         return tckPluginMBObjName;
     }
 
-    private static Logger logger = Logger.getLogger(SleeTCKPluginWrapper.class);
-    
 }

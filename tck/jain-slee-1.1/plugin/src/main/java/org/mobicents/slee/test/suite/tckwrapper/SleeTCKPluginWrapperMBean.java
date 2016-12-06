@@ -11,10 +11,6 @@
 
 package org.mobicents.slee.test.suite.tckwrapper;
 
-import javax.management.MBeanRegistration;
-
-import org.jboss.system.ServiceMBean;
-
 /**
  * 
  * The Standard MBean interface, which makes visible to the MBeans server 
@@ -23,7 +19,7 @@ import org.jboss.system.ServiceMBean;
  * @author Ivelin Ivanov
  *
  */
-public interface SleeTCKPluginWrapperMBean extends ServiceMBean, MBeanRegistration 
+public interface SleeTCKPluginWrapperMBean
 {
     public abstract void setTCKPluginClassName(String newClName);
 

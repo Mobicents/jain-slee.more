@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.mobicents.servers.jainslee.tck</groupId>
 		<artifactId>restcomm-slee-tck</artifactId>
-		<version>2.1.0-SNAPSHOT</version>
+		<version>2.2.0-SNAPSHOT</version>
 	</parent>
 		
 	<artifactId>restcomm-slee-tck-plugin</artifactId>
@@ -30,6 +30,12 @@
 			<version>2.0.0.GA</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+			<version>1.0.2.Final</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	
 	<build>
@@ -37,6 +43,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.1</version>
 				<configuration>
 					<finalName>${build.finalName}-bean</finalName>
 					<descriptors>
@@ -47,13 +54,16 @@
 					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
 				<executions>
+
 					<execution>
-						<id>make-assembly</id><!-- this is used for inheritance merges -->
-						<phase>package</phase><!-- append to the packaging phase. -->
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- append to the packaging phase. -->
 						<goals>
-							<goal>attached</goal><!-- goals == mojos -->
+							<!--<goal>attached</goal> <!- - goals == mojos -->
+							<goal>single</goal>
 						</goals>
 					</execution>
+
 				</executions>
 			</plugin>		
 			<plugin>
@@ -67,7 +77,7 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<copy overwrite="true" file="target/${project.build.finalName}-bean.jar" todir="${jboss.home}/server/${node}/deploy" />
+								<!--<copy overwrite="true" file="target/${project.build.finalName}-bean.jar" todir="${jboss.home}/standalone/deployments" />-->
 							</tasks>
 						</configuration>
 					</execution>
@@ -79,7 +89,8 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<delete file="${jboss.home}/server/${node}/deploy/slee/deploy/${project.build.finalName}-bean.jar" />
+								<!--<delete file="${jboss.home}/server/${node}/deploy/slee/deploy/${project.build.finalName}-bean.jar" />-->
+								<!--<delete file="${jboss.home}/standalone/deployments/${project.build.finalName}-bean.jar" />-->
 							</tasks>
 						</configuration>
 					</execution>
