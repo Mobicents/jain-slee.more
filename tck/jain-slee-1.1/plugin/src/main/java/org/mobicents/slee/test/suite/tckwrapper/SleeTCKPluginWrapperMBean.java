@@ -21,19 +21,19 @@ package org.mobicents.slee.test.suite.tckwrapper;
  */
 public interface SleeTCKPluginWrapperMBean
 {
-    public abstract void setTCKPluginClassName(String newClName);
+    void setTCKPluginClassName(String newClName);
 
-    public abstract String getTCKPluginClassName();
+    String getTCKPluginClassName();
 
-    public abstract void setRMIRegistryPort(int port);
+    void setRMIRegistryPort(int port);
 
-    public abstract int getRMIRegistryPort();
+    int getRMIRegistryPort();
 
-    public abstract void setSleeProviderImpl(String provider);
+    void setSleeProviderImpl(String provider);
 
-    public abstract String getSleeProviderImpl();
+    String getSleeProviderImpl();
 
-    public abstract void setTCKPluginMBeanObjectName(String newMBObjectName);
+    void setTCKPluginMBeanObjectName(String newMBObjectName);
 
-    public abstract String getTCKPluginMBeanObjectName();
+    String getTCKPluginMBeanObjectName();
 }

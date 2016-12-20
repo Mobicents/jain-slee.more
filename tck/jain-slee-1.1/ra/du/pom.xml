@@ -13,11 +13,13 @@
 		
 	<dependencies>
 		<!-- components -->
+
 		<dependency>
 			<groupId>com.opencloud</groupId>
 			<artifactId>sleetck-ra-events</artifactId>
 			<version>1.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.opencloud</groupId>
 			<artifactId>sleetck-ra-type</artifactId>
@@ -28,6 +30,25 @@
 			<artifactId>sleetck-ra</artifactId>
 			<version>1.1</version>
 		</dependency>
+
+		<!--
+		<dependency>
+			<artifactId>restcomm-slee-tck-ra-events</artifactId>
+			<groupId>${pom.groupId}</groupId>
+			<version>${pom.version}</version>
+		</dependency>
+
+		<dependency>
+			<artifactId>restcomm-slee-tck-ra-ratype</artifactId>
+			<groupId>${pom.groupId}</groupId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>restcomm-slee-tck-ra-ra</artifactId>
+			<groupId>${pom.groupId}</groupId>
+			<version>${pom.version}</version>
+		</dependency>
+		-->
 	</dependencies>
 	
 		

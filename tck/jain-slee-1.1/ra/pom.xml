@@ -14,6 +14,14 @@
 	<name>Restcomm :: JAIN SLEE Server :: TCK :: ${pom.artifactId}</name>
 	
 	<modules>
+		<!--
+		<module>events</module>
+		<module>ratype</module>
+		<module>ra</module>
+		-->
+		<!--<module>events</module>-->
+		<!--<module>ratype</module>
+		<module>ra</module>-->
 		<module>du</module>
 	</modules>
 

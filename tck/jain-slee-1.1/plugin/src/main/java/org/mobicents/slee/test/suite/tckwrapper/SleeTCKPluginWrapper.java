@@ -16,16 +16,16 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+//import javax.annotation.PostConstruct;
+//import javax.annotation.PreDestroy;
 import javax.management.MBeanServer;
 import javax.management.ObjectInstance;
 import javax.management.ObjectName;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
+//import javax.ejb.Singleton;
+//import javax.ejb.Startup;
 
 import com.opencloud.sleetck.lib.infra.sleeplugin.SleeTCKPlugin;
 
@@ -40,13 +40,14 @@ import com.opencloud.sleetck.lib.infra.sleeplugin.SleeTCKPlugin;
  * 
  */
 
-@Singleton
-@Startup
+//@Singleton
+//@Startup
 public class SleeTCKPluginWrapper implements SleeTCKPluginWrapperMBean {
     private static Logger logger = Logger.getLogger(SleeTCKPluginWrapper.class);
 
     private MBeanServer platformMBeanServer;
-    private ObjectName objectName = null;
+    //private ObjectName objectName = null;
+    public final static String OBJECT_NAME = "slee:service=SleeTCKWrapper";
 
     private String tckPluginMBObjName;
     private ObjectInstance tckPluginMBean; 
@@ -55,17 +56,20 @@ public class SleeTCKPluginWrapper implements SleeTCKPluginWrapperMBean {
     private String sleeProviderImpl;   
     private Registry rmiRegistry;
 
-    @PostConstruct
-    public void registerMBean()
+    //@PostConstruct
+    public void startService()
     {
+        platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
+
+        /*
         try {
             //objectName = new ObjectName("SleeTCK:type=" + this.getClass().getName());
             objectName = new ObjectName("slee:service=SleeTCKWrapper");
-            platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
             platformMBeanServer.registerMBean(this, objectName);
         } catch (Exception e) {
             throw new IllegalStateException("Problem during registration of Monitoring into JMX:" + e);
         }
+        */
 
         this.setTCKPluginClassName("com.opencloud.sleetck.lib.infra.sleeplugin.SleeTCKPlugin");
         this.setTCKPluginMBeanObjectName(":name=SleeTCKPlugin");
@@ -98,10 +102,10 @@ public class SleeTCKPluginWrapper implements SleeTCKPluginWrapperMBean {
         }
     }
 
-    @PreDestroy
-    public void unregisterMBean() {
+    //@PreDestroy
+    public void stopService() {
         try {
-            platformMBeanServer.unregisterMBean(this.objectName);
+            //platformMBeanServer.unregisterMBean(this.objectName);
             platformMBeanServer.unregisterMBean(this.tckPluginMBean.getObjectName());
         } catch (Exception e) {
             throw new IllegalStateException("Problem during unregistration of Monitoring into JMX:" + e);
