@@ -5,7 +5,13 @@
             <subsystem name="ejb3" />
         </exclude-subsystems>
         <dependencies>
-            <module name="org.telestax.slee.container.lib"/>
+            <module name="javax.persistence.api" export="true"/>
+            <module name="org.hibernate" export="true"/>
+            <module name="org.jboss.as.jpa" export="true"/>
+            <module name="org.jboss.as.jpa.spi" export="true"/>
+
+            <module name="com.opencloud" export="true"/>
+            <module name="org.telestax.slee.container.lib" export="true"/>
         </dependencies>
     </deployment>
 </jboss-deployment-structure>
