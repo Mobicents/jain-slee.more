@@ -1,4 +1,4 @@
-package org.mobicents.slee.test.suite.extension;
+package org.restcomm.slee.test.suite.extension;
 
 import org.jboss.as.controller.SimpleResourceDefinition;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;

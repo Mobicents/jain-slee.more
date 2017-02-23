@@ -1,4 +1,4 @@
-package org.mobicents.slee.test.suite.extension;
+package org.restcomm.slee.test.suite.extension;
 
 import java.util.List;
 

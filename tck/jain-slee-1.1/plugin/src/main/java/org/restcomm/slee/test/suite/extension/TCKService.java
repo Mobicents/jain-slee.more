@@ -1,9 +1,9 @@
-package org.mobicents.slee.test.suite.extension;
+package org.restcomm.slee.test.suite.extension;
 
 import org.jboss.logging.Logger;
 import org.jboss.msc.service.*;
 import org.jboss.msc.value.InjectedValue;
-import org.mobicents.slee.test.suite.tckwrapper.SleeTCKPluginWrapper;
+import org.restcomm.slee.test.suite.tckwrapper.SleeTCKPluginWrapper;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -13,7 +13,7 @@ public class TCKService implements Service<TCKService> {
     private final Logger log = Logger.getLogger(TCKService.class);
 
     public static ServiceName getServiceName() {
-        return ServiceName.of("mobicents","sleetck");
+        return ServiceName.of("restcomm","sleetck");
     }
 
     private final InjectedValue<MBeanServer> mbeanServer = new InjectedValue<MBeanServer>();

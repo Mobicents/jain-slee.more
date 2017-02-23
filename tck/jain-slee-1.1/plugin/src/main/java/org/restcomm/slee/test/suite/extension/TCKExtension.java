@@ -1,4 +1,4 @@
-package org.mobicents.slee.test.suite.extension;
+package org.restcomm.slee.test.suite.extension;
 
 import org.jboss.as.controller.*;
 import org.jboss.as.controller.descriptions.StandardResourceDescriptionResolver;
@@ -33,7 +33,7 @@ public class TCKExtension implements Extension {
     /**
      * The name space used for the {@code substystem} element
      */
-    public static final String NAMESPACE = "urn:mobicents:sleetck:1.0";
+    public static final String NAMESPACE = "urn:restcomm:sleetck:1.0";
 
     /**
      * The name of our subsystem within the model.

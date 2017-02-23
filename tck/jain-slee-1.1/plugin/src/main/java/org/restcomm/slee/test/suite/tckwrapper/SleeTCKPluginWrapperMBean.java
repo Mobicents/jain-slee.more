@@ -9,7 +9,7 @@
  *                                                 *
  ***************************************************/
 
-package org.mobicents.slee.test.suite.tckwrapper;
+package org.restcomm.slee.test.suite.tckwrapper;
 
 /**
  * 

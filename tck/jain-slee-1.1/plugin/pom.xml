@@ -16,8 +16,8 @@
 	<properties>
 		<version.wildfly.core>2.2.0.Final</version.wildfly.core>
 
-		<module.name>org.mobicents.slee.test.suite.extension</module.name>
-		<module.path>org/mobicents/slee/test/suite/extension</module.path>
+		<module.name>org.restcomm.slee.test.suite.extension</module.name>
+		<module.path>org/restcomm/slee/test/suite/extension</module.path>
 	</properties>
 
 	<dependencyManagement>
@@ -159,13 +159,13 @@
 								<replace file="${jboss.home}/standalone/configuration/standalone.xml">
 									<replacetoken><![CDATA[</extensions>]]></replacetoken>
 									<replacevalue><![CDATA[
-		<extension module="org.mobicents.slee.test.suite.extension"/>
+		<extension module="org.restcomm.slee.test.suite.extension"/>
 	</extensions>]]></replacevalue>
 								</replace>
 								<replace file="${jboss.home}/standalone/configuration/standalone.xml">
 									<replacetoken><![CDATA[</profile>]]></replacetoken>
 									<replacevalue><![CDATA[
-		<subsystem xmlns="urn:mobicents:sleetck:1.0"/>
+		<subsystem xmlns="urn:restcomm:sleetck:1.0"/>
 	</profile>]]></replacevalue>
 								</replace>
 							</tasks>
@@ -181,11 +181,11 @@
 							<tasks>
 								<delete failonerror="false" dir="${jboss.home}/modules/system/layers/base/${module.path}"/>
 								<replace file="${jboss.home}/standalone/configuration/standalone.xml">
-									<replacetoken><![CDATA[<extension module="org.mobicents.slee.test.suite.extension"/>]]></replacetoken>
+									<replacetoken><![CDATA[<extension module="org.restcomm.slee.test.suite.extension"/>]]></replacetoken>
 									<replacevalue><![CDATA[]]></replacevalue>
 								</replace>
 								<replace file="${jboss.home}/standalone/configuration/standalone.xml">
-									<replacetoken><![CDATA[<subsystem xmlns="urn:mobicents:sleetck:1.0"/>]]></replacetoken>
+									<replacetoken><![CDATA[<subsystem xmlns="urn:restcomm:sleetck:1.0"/>]]></replacetoken>
 									<replacevalue><![CDATA[]]></replacevalue>
 								</replace>
 							</tasks>
@@ -193,6 +193,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 	
