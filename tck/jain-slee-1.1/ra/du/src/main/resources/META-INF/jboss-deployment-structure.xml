@@ -11,7 +11,7 @@
             <module name="org.jboss.as.jpa.spi" export="true"/>
 
             <module name="com.opencloud" export="true"/>
-            <module name="org.telestax.slee.container.lib" export="true"/>
+            <module name="org.restcomm.slee.container.lib" export="true"/>
         </dependencies>
     </deployment>
 </jboss-deployment-structure>

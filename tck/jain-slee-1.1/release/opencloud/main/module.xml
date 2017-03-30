@@ -18,6 +18,6 @@
     	<module name="org.apache.commons.lang" export="true"/>
     	
     	<module name="sun.jdk" export="true"/>
-    	<module name="org.telestax.slee.container.lib" export="true"/>
+    	<module name="org.restcomm.slee.container.lib" export="true"/>
     </dependencies>
 </module>
