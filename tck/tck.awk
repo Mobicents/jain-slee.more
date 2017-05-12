@@ -9,18 +9,35 @@ BEGIN { print "<testsuite name=\"org.jainslee.tck\" time=\"1.0\">" }
     #get last dot pos again
     lastDot = match(className, /[^.]+$/);
     #finally get test name
-    className = substr(className,lastDot);
+    testCaseName = substr(className,lastDot);
+    className = substr(className,1, lastDot - 2);
+
 
     printf "<testcase classname=\"";
-    print $1;
+    print className;
     printf"\" name=\"";
-    printf className;
+    printf testCaseName;
     print "\" time=\"0.0\">";
-    if ($2 !="Passed.") {
+    if ($2 =="Failed.") {
        printf "<failure message=\"";
-       for(i=3;i<=NF;i++){printf "%s ", $i};
-       print "\"/>";
+       for(i=3;i<=7;i++){printf "%s ", $i}; 
+       print "\">";
+       print "<![CDATA["
+       for(i=7;i<=NF;i++){printf "%s ", $i};
+       print "]]>"
+       print "</failure>"
     }
+    if ($2 =="Error.") {
+       printf "<error message=\"";
+       printf $3 
+       print "\">";
+       print "<![CDATA["
+       for(i=4;i<=NF;i++){printf "%s ", $i};
+       print "]]>"
+       print "</error>"
+    }
+
+
     print "</testcase>";
 }
 
