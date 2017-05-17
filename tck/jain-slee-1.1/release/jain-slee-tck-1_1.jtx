@@ -38,11 +38,11 @@ tests/transactions/isolation/Test2004Test.xml
 tests/api/signaturetest/SleeSignatureTest1_1.xml				-1		n/a		Comment
 
 # ABORT_ONLY
-tests/sbb/abstractclass/SbbRolledBackNewTransaction.xml			-1		n/a		Comment
-tests/sbb/abstractclass/SbbExceptionThrownEvent.xml				-1		n/a		Comment
-tests/javax/slee/Sbb/Test3215Test.xml							-1		n/a		Comment
-tests/profiles/profileabstractclass/Test1110251Test.xml			-1		n/a		Comment
-tests/transactions/Test1931Test.xml								-1		n/a		Comment
+#tests/sbb/abstractclass/SbbRolledBackNewTransaction.xml			-1		n/a		Comment
+#tests/sbb/abstractclass/SbbExceptionThrownEvent.xml				-1		n/a		Comment
+#tests/javax/slee/Sbb/Test3215Test.xml							-1		n/a		Comment
+#tests/profiles/profileabstractclass/Test1110251Test.xml			-1		n/a		Comment
+#tests/transactions/Test1931Test.xml								-1		n/a		Comment
 
 # IS_ENDING
 tests/activities/activitycontext/Test560Test.xml				-1		n/a		Comment
