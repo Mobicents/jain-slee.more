@@ -35,10 +35,14 @@ tests/transactions/isolation/Test2004Test.xml
 
 ##########
 
-#tests/api/signaturetest/SleeSignatureTest1_1.xml				-1		n/a		Comment
+tests/api/signaturetest/SleeSignatureTest1_1.xml				-1		n/a		Comment
 
 # IS_ENDING
 tests/activities/activitycontext/Test560Test.xml				-1		n/a		Comment
 tests/resource/endpoint/Test1115277Test.xml						-1		n/a		Comment
 tests/resource/endpoint/Test1115278Test.xml						-1		n/a		Comment
 tests/resource/endpoint/Test1115265Test.xml						-1		n/a		Comment
+
+tests/resource/endpoint/Test1115303Test.xml
+tests/resource/endpoint/Test1115316Test.xml
+
